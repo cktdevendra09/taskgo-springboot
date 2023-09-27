@@ -10,6 +10,6 @@ public interface TaskService {
         
     String postTask(TaskEntity taskEntity);
 
-    String taskStatus(TaskEntity taskEntity,int id);
+    String taskStatus(int id);
     String deleteById(int id);
 }

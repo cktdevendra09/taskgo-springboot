@@ -9,11 +9,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/taskgo")
+
 public class TaskController {
 
     @Autowired
     private TaskService taskService;
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/{getStatus}")
     public List<TaskEntity> getAllByStatus(@PathVariable boolean getStatus){
         return this.taskService.getAllByStatus(getStatus);
@@ -24,14 +26,15 @@ public class TaskController {
         return this.taskService.postTask(taskEntity);
     }
 
+    @CrossOrigin(origins = "*")
     @PutMapping("/{id}")
-    public String taskStatus( @RequestBody TaskEntity taskEntity, @PathVariable int id){
-        return this.taskService.taskStatus(taskEntity,id);
+    public String taskStatus(@PathVariable int id){
+        return this.taskService.taskStatus(id);
     }
 
+    @CrossOrigin(origins = "*")
     @DeleteMapping("/{id}")
     public String deleteById(@PathVariable int id){
-
         return this.taskService.deleteById(id);
     }
 }

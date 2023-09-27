@@ -30,11 +30,11 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public String taskStatus(TaskEntity taskEntity, int id) {
+    public String taskStatus(int id) {
         Optional<TaskEntity> task = this.taskRepo.findById(id);
         if (task.isPresent()){
             TaskEntity existTask = task.get();
-            existTask.setStatus(taskEntity.isStatus());
+            existTask.setStatus(!existTask.isStatus());
             this.taskRepo.save(existTask);
             return "Updated";
         }
